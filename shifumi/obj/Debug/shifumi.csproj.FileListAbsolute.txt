@@ -1,0 +1,7 @@
+C:\Users\Z3D\source\repos\shifumi\shifumi\bin\Debug\shifumi.exe.config
+C:\Users\Z3D\source\repos\shifumi\shifumi\bin\Debug\shifumi.exe
+C:\Users\Z3D\source\repos\shifumi\shifumi\bin\Debug\shifumi.pdb
+C:\Users\Z3D\source\repos\shifumi\shifumi\obj\Debug\shifumi.csprojAssemblyReference.cache
+C:\Users\Z3D\source\repos\shifumi\shifumi\obj\Debug\shifumi.csproj.CoreCompileInputs.cache
+C:\Users\Z3D\source\repos\shifumi\shifumi\obj\Debug\shifumi.exe
+C:\Users\Z3D\source\repos\shifumi\shifumi\obj\Debug\shifumi.pdb
