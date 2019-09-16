@@ -10,15 +10,34 @@ namespace CSharp_Shell
     {
         public static void Main()
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("           !SHI FU MI!");
+            Console.WriteLine("************************************");
+            Console.ResetColor();
             string playerChoice = "";
             bool retry = true;
             string[] shifumi = { "pierre", "feuille", "ciseaux" };                  // tableau pour choix aleatoire de l'IA
             int score = 0;
-            int highScore = int.Parse(File.ReadAllText("high_score.txt"));               // recupération du meilleur score dans le fichier score.txt
+            int highScore = 0;
+            string playerName = "";
+            string bestPlayer = "";
             Random rnd = new Random();
-            Console.WriteLine();
-            Console.WriteLine("Le meilleur score actuel est de "+highScore);
+   
+
+            if (File.Exists("high_score.txt"))                                    // si le fichier de score existe afficher le meilleur score
+            {
+                string lireScore = File.ReadAllText("high_score.txt");
+                string[] highScores = lireScore.Split(';');
+                highScore = int.Parse(highScores[0]);
+                bestPlayer = highScores[1];
+                Console.WriteLine();
+                Console.WriteLine($"Le meilleur score est de {highScore} par {bestPlayer}.");
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();                                                 // entrer le nom du joueur
+            Console.Write("Entrez votre nom : ");
+            playerName = Console.ReadLine().ToUpper();
             Console.WriteLine();
 
             while (retry)
@@ -76,9 +95,10 @@ namespace CSharp_Shell
                     if (next.ToLower() == "n")
                     {
 
-                        if (score > highScore)
+                        if (score > highScore)                                          // si le score est battu l'insrire dans le fichier
                         {
-                            File.WriteAllText("high_score.txt", "" + score);               // ecriture du nouveau meilleur score
+                            string lireScore = score + ";" + playerName;
+                            File.WriteAllText("high_score.txt", lireScore);
                             Console.WriteLine();
                             Console.WriteLine($"BRAVO ! Votre score est de {score}, vous avez battu le meilleur score !");
                             Console.WriteLine();
@@ -86,7 +106,6 @@ namespace CSharp_Shell
                             Console.ReadKey();
                             retry = false;
                             break;
-
                         }
 
                         else
@@ -99,10 +118,8 @@ namespace CSharp_Shell
                             break;
                         }
                     }
-                    
                 }
             }
-
 
             void win()                                                                // methode pour le message "gagner" pour meilleur lisibilité
             {
@@ -113,7 +130,6 @@ namespace CSharp_Shell
                 Console.ResetColor();
                 score++;
             }
-
         }
     }
 }
